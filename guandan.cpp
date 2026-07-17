@@ -17,7 +17,7 @@ int main(){
     
     //numbers 
     //i end up not even understanding my own code at times
-        for (int i=0;i<=25;i++){
+        for (int i=0;i<=16;i++){
             if (i<=10)
                 card_value.push_back(tuple<string,int>(to_string(i+1),i+1));
             else if (i==11)
@@ -28,10 +28,6 @@ int main(){
                 card_value.push_back(tuple<string,int>("K",i-1));
             else if (i==14)
                 card_value.push_back(tuple<string,int>("A",i-1));
-            else if (i==15)
-                card_value.push_back(tuple<string,int>("Small Joker",i-1));
-            else if (i==16)
-                card_value.push_back(tuple<string,int>("Big Joker",i-1));
 
 
         }
@@ -43,8 +39,7 @@ int main(){
     //card itself
         vector<tuple<int,string,string>> card_traits;
             for (int i=0;i<card_value.size();i++){
-                get<0>(card_traits[i])=get<1>(card_value[i]);
-                
+                card_traits.push_back(tuple(get<1>(card_value[i])));
 
                 for (int j=0;j<suits.size();j++){
                     get<1>(card_traits[i]) = suits[j];
