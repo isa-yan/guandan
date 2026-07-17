@@ -41,18 +41,21 @@ int main(){
 
 
     //card itself
-        tuple<int,string,string> card_traits;
+        vector<tuple<int,string,string>> card_traits;
             for (int i=0;i<card_value.size();i++){
-                get<0>(card_traits)=get<1>(card_value[i]);
+                get<0>(card_traits[i])=get<1>(card_value[i]);
                 
 
                 for (int j=0;j<suits.size();j++){
-                    get<1>(card_traits) = suits[j];
+                    get<1>(card_traits[i]) = suits[j];
                 }
             }
         
     //test
-        
+        for (int i=0; i<card_traits.size();i++){
+            cout<<get<0>(card_traits[i]);
+            cout<<get<1>(card_traits[i]);
+        }
 
     
 
