@@ -18,26 +18,31 @@ int main(){
     */
 
     //setting up shit in here
-    vector<string> suits={"\u2660","\u2665","\u2666","\u2663"};
 
     //setting up the struct
     struct card_traits{
         int value;
         string on_screen_value;
-        string suit;
         bool is_trump;
 
     };
 
+    struct suit{
+        vector<string> suits={"\u2660","\u2665","\u2666","\u2663"};
+    };
+    
+    vector<array<card_traits,26>> total_cards;
     array<card_traits,26> cards;
 
     //putting shit in the struct
     //rn i'm trying out putting this within a suit for loop
-    for(int j=0;j<suits.size();j++){
-
+    for(int j=0;j<4;j++){
         for (int i=0; i<13; i++){
             cards[i].value=i+1;
-            cards[i].suit=suits[j];
+
+            /*for (int k=0;k<4;k++){
+                total_cards[k[i]].suit=suits[j];
+            }*/
 
             if(i==0){
                 cards[0].on_screen_value="A";
