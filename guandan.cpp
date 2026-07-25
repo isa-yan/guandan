@@ -18,20 +18,20 @@ int main(){
     */
 
     //setting up shit in here
+    vector<string> suits={"\u2660","\u2665","\u2666","\u2663"};
+    vector<string> on_screen_values={"1","2","3","4","5","6","7","8","9","10","J","Q","K","A"};
 
     //setting up the struct
     struct card_traits{
         int value;
         string on_screen_value;
-        bool is_trump;
+        bool is_trump=false;
+        string suit;
 
     };
 
-    struct suit{
-        vector<string> suits={"\u2660","\u2665","\u2666","\u2663"};
-    };
     
-    vector<array<card_traits,26>> total_cards;
+    array<array<card_traits,26>,4> total_cards;
     array<card_traits,26> cards;
 
     //putting shit in the struct
@@ -39,33 +39,24 @@ int main(){
     for(int j=0;j<4;j++){
         for (int i=0; i<13; i++){
             cards[i].value=i+1;
+            cards[i].on_screen_value=on_screen_values[i];
+            cards[i].suit=suits[j];
+
+            total_cards.at(j).at(i).value=cards[i].value;
+            total_cards.at(j).at(i).suit=cards[i].suit;
+            total_cards.at(j).at(i).on_screen_value=cards[i].on_screen_value;
 
             /*for (int k=0;k<4;k++){
                 total_cards[k[i]].suit=suits[j];
             }*/
-
-            if(i==0){
-                cards[0].on_screen_value="A";
-                cards[0].value=13;
-            }
-
-            else if(i<=9)
-                cards[i].on_screen_value=to_string(i+1);
-            else if(i==10)
-                cards[i].on_screen_value="J";
-            else if(i==11)
-                cards[i].on_screen_value="Q";
-            else if(i==12)
-                cards[i].on_screen_value="K";
-
-            if (cards[i].is_trump==true)
-                cards[i].value=14;
-
-            cout<<cards[i].on_screen_value<<cards[i].suit<<"\n";
             
         }
     }
-    
+    for (int i=0;i<total_cards.size();i++){
+        for (int j=0;j<108;j++){
+            cout<<total_cards[i][j].on_screen_value<<total_cards[i][j].suit<<"\n";
+        }
+    }
 
     //suit shit here. so i need the cards to fit certain suits but idk how to do that :thonk:
  
