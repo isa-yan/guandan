@@ -24,9 +24,20 @@ struct card {
     
 };
 
-array<array<card,13>,4> one_suit_card;
+struct combinations{ //combinations that are possible;
+    bool can_play;
+    string type;
+    int card_number;
+};
+
+
+
+array<array<array<card,14>,4>,2> total_cards;
+
+//array<array<card,13>,4> one_suit_card; //one suit of cards, and there's 4 suits of one suit
 
 int main(){
+    /*
     for(int j=0;j<4;j++){
         for(int i=0;i<13;i++){
             one_suit_card[i][j].on_screen_value=on_screen_display[i];
@@ -38,7 +49,21 @@ int main(){
             cout<<one_suit_card[i][j].suit;
         }
         
-    }   
+    }  */
+    for (int k=0;k<2;k++){
+        for(int j=0;j<4;j++){
+            for(int i=0;i<13;i++){
+                total_cards[k][j][i].on_screen_value=on_screen_display[i];
+                total_cards[k][j][i].value=i+2;
+
+                total_cards[k][j][i].suit=suit_value[j];
+
+                cout<<total_cards[k][j][i].on_screen_value;
+                cout<<total_cards[k][j][i].suit;
+            }
+        }
+    }
+
 
 
     return 0;
