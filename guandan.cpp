@@ -24,15 +24,56 @@ struct card {
     
 };
 
-struct combinations{ //combinations that are possible;
-    bool can_play;
+bool can_play;
+
+struct combination{ //combinations that are possible;
     string type;
-    int card_number;
+    int no_of_cards;
+    bool same_suit;
+    int combo_value;
 };
 
+combination single;
+combination duo;
+combination triple;
+combination kaboom4;
+combination kaboom5;
+combination kaboom6;
+combination kaboom7;
+combination kaboom8;
+combination straight;
+combination full_house;
+combination in_row_3pairs;
+combination two_ordered_triples;
+
+vector<combination> possible_combos={single,duo,triple,kaboom4,kaboom5,kaboom6,kaboom7,kaboom8,straight,full_house,in_row_3pairs,two_ordered_triples;}
+
+int practice_logic_combo(){
+    /*if(can_play==false){
+
+    } for later worrking with a graphics library*/ 
+    
+    for(int i=0;i<11;i++){
+        possible_combos[i].no_of_cards=i;
+        if(i==7)
+            possible_combos[i].no_of_cards=5;
+        if(i==8)
+            possible_combos[i].no_of_cards=5;
+        if(i==9)
+            possible_combos[i].no_of_cards=6;
+        if(i==10)
+            possible_combos[i].no_of_cards=6;
+        
+    }
+
+    
+
+    return 0;
+}
 
 
-array<array<array<card,14>,4>,2> total_cards;
+
+array<array<array<card,13>,4>,2> total_cards;//array of two decks, two decks are 4 arrays of suits, and 13 cards in each suit
 
 //array<array<card,13>,4> one_suit_card; //one suit of cards, and there's 4 suits of one suit
 
