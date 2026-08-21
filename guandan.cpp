@@ -3,10 +3,19 @@
 #include <string>
 #include <iostream>
 #include <array>
+// Optional SFML include; comment out if SFML is not installed or include path is not set.
+// If you have SFML available, uncomment the next line and ensure your includePath / build flags
+// are configured to find the SFML headers.
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 using namespace std;
 
 /*
-clang++ -std=c++17 -g guandan.cpp -o guandan
+clang++ -std=c++17 -g guandan.cpp -o guandan \
+-I"$(brew --prefix sfml)/include" \
+-L"$(brew --prefix sfml)/lib" \
+-lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+
 ./guandan
 */
 string diamond="\u2666";
@@ -46,7 +55,7 @@ combination full_house;
 combination in_row_3pairs;
 combination two_ordered_triples;
 
-vector<combination> possible_combos={single,duo,triple,kaboom4,kaboom5,kaboom6,kaboom7,kaboom8,straight,full_house,in_row_3pairs,two_ordered_triples;}
+vector<combination> possible_combos={single,duo,triple,kaboom4,kaboom5,kaboom6,kaboom7,kaboom8,straight,full_house,in_row_3pairs,two_ordered_triples};
 
 int practice_logic_combo(){
     /*if(can_play==false){
@@ -55,20 +64,26 @@ int practice_logic_combo(){
     
     for(int i=0;i<11;i++){
         possible_combos[i].no_of_cards=i;
-        if(i==7)
+        if(i==7){
             possible_combos[i].no_of_cards=5;
-        if(i==8)
+        }if(i==8){
             possible_combos[i].no_of_cards=5;
-        if(i==9)
+        }if(i==9){
             possible_combos[i].no_of_cards=6;
-        if(i==10)
+        }if(i==10){
             possible_combos[i].no_of_cards=6;
+        }
         
     }
+    //sfml
+    sf::RenderWindow window(sf::VideoMode({800,600}),"SFML window");
 
     
 
     return 0;
+
+
+
 }
 
 
